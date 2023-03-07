@@ -23,7 +23,7 @@ app.use(express.static('./assets'));
 
 //use of layouts = always called before routes
 app.use(expressLayouts);
-
+ 
 //use of router
 app.use('/',require('./routes'));
 
