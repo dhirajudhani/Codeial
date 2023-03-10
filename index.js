@@ -2,6 +2,16 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const port =  8001;
 const app = express();
+//require layouts
+const expressLayouts = require('express-ejs-layouts');
+//require mongoose
+const db = require('./config/mongoose');
+
+//used for session cookie
+const session = require('express-session');
+const passport = require('passport');
+const passportLocal = require('./config/passport-local-strategy');
+const MongoStore = require('connect-mongo')(session);
 
 //for encryption 
 app.use(express.urlencoded());
@@ -9,10 +19,7 @@ app.use(express.urlencoded());
 //use cookie 
 app.use(cookieParser());
 
-//require layouts
-const expressLayouts = require('express-ejs-layouts');
-//require mongoose
-const db = require('./config/mongoose');
+
 
 //extract style  and scripts from sub pages into layouts
 app.set('layout extractStyles',true);
@@ -24,13 +31,43 @@ app.use(express.static('./assets'));
 //use of layouts = always called before routes
 app.use(expressLayouts);
 
-//use of router
-app.use('/',require('./routes'));
+
 
 
 //setting up templete engine
 app.set('view engine','ejs');
 app.set('views','./views');
+
+//middleware that takes cookies and make it encrypt 
+//Mongo store is used to store the session cookie in the db
+app.use(session({
+    name:'codeial',
+    //TODO change the secret before deployment 
+    secret:'blahsomething',  // use to encrypt data
+    saveUninitialized:false,
+    resave:false,
+    cookie:{
+        maxAge:(1000*60*100) //session expire in ms
+    },
+    store:  new MongoStore(
+        {
+            mongooseConnection:db,
+            autoRemove : 'disabled'
+        },
+        function(err){
+            console.log(err || 'connect-mongodb setup'); 
+        }
+    )
+}
+));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(passport.setAuthenticatedUser);
+
+//use of router
+app.use('/',require('./routes'));
 
 app.listen(port,function(err){
     if(err){
