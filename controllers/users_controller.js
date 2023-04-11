@@ -4,9 +4,23 @@ const User = require('../models/user');
 // This one controller can handle many users 
 //Note every time  we make controller to access it we have to make route
 module.exports.profile = function(req,res){
-   return res.render('user_profile',{
-    title:"User"
+   User.findById(req.params.id, function(err,user){
+      return res.render('user_profile',{
+         title:"User",
+         profile_user:user
+        });
    });
+  
+}
+
+module.exports.update = function(req,res){
+   if(req.user.id == req.params.id){
+      User.findByIdAndUpdate(req.params.id , req.body , function(err,user){
+         return res.redirect('back');
+      });
+   }else{
+       return res.status(401).send('Unauthorized');
+   }
 }
 
 //render a sign up page
