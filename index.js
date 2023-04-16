@@ -39,6 +39,9 @@ app.set('layout extractScripts',true);
 //use of static files
 app.use(express.static('./assets'));
 
+//make the uploads path available to the browser
+app.use('/uploads',express.static(__dirname+'/uploads')); //path = codeial/uploads
+
 //use of layouts = always called before routes
 app.use(expressLayouts);
 
