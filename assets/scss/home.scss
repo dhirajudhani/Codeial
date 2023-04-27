@@ -1,14 +1,32 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
 #home-container{
-    display: flex;
+    display:flex;
+    min-height:90%;
+    
+    
+    
+    // border:1px solid black;
+    
+
     #feed-posts{
-        width: 70%;
-        padding: 10px;
+        width:70%;
+        padding:10px;
     }
-    #user-friends{
-        width: 30%;
-        padding: 10px;
-        border: 1px solid lightgray;
-        height: 100%;
+    #friends-container{
+        // min-height:100em;
+        border-left:1px solid grey;
+        #user-friends{
+            // min-height:100%;
+            width:30%;
+            padding:10px;
+           
+            height:inherit;
+            
+        }
+        #chatbox-section{
+            // margin-top:90%;
+            // margin-left:5%;
+            position:fix;
+        }
     }
 }

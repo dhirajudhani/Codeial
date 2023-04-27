@@ -1,15 +1,23 @@
-<h1>
+<link rel="stylesheet" href="/css/user_sign_up.css">
+
+<script src="https://code.iconify.design/2/2.2.0/iconify.min.js"></script>
+<div id="signout_container">
+<h1 id="heading">
     Sign Up
 </h1>
-
-<form action="/users/create" method="post">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <input type="password" name="confirm_password" placeholder="Confirm Password" required>
-    <input type="submit" value="Sign Up">
-</form>
-
-<p>
-    <a href="/users/auth/google">Google SignIn/SignUp</a>
-</p>
+<span id="title_heading">----   sign up with</span>
+<div id="google_signin_container"><p>
+    <a href="/users/auth/google" id="no-textdecoration"><span class="iconify" data-icon="ant-design:google-circle-filled"></span> Google Signin</a>
+</p></div>
+<div class="form_container">
+<form action="/users/create" method="POST">
+<input type="text" name="name" placeholder="Enter Name" id="signupForm_name">
+<input type="email" name="email" placeholder="Enter Email" id="signupForm_email"><br>
+<input type="password" name="password" placeholder="Enter Password" id="signupForm_password"><br>
+<input type="password" name="confirm_password" placeholder="Enter password again" id="signupForm_confirm_password"><br>
+<input type="submit" name="submit" value="Create Account" id="signupForm_submit"><br>
+<input type="checkbox" id="signupForm_terms" value="true"> I hereby accept all terms and conditions of Codeial <br>
+<div id="signupForm_signIn">Already have an account <a href="/users/user-signin">Sign In</a></div>
+</div>
+<div class="thoughtOfTheDay">“Social Media puts the “public” into PR and the “market” into marketing. ” <br><span>Chris Brogan, President of New Marketing Labs, chrisbrogan.com</span></div>
+</div>

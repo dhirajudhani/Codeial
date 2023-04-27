@@ -1,11 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
 #home-container {
-  display: flex; }
+  display: flex;
+  min-height: 90%; }
   #home-container #feed-posts {
     width: 70%;
     padding: 10px; }
-  #home-container #user-friends {
-    width: 30%;
-    padding: 10px;
-    border: 1px solid lightgray;
-    height: 100%; }
+  #home-container #friends-container {
+    border-left: 1px solid grey; }
+    #home-container #friends-container #user-friends {
+      width: 30%;
+      padding: 10px;
+      height: inherit; }
+    #home-container #friends-container #chatbox-section {
+      position: fix; }

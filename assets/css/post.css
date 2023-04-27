@@ -1,0 +1,11 @@
+.post-comments .like-button:link {
+  color: pink; }
+
+.post-comments .like-button:visited {
+  color: pink; }
+
+.post-comments .like-button:hover {
+  color: pink; }
+
+.post-comments .link-button:active {
+  color: pink; }

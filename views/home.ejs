@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="/css/home.css">
 
+
 <div id="home-container">
     <section id="feed-posts">
         <h4>Posts</h4>
@@ -18,6 +19,7 @@
         </div>
     </section>
     
+    <section id="friends-container">
     <section id="user-friends">
         <h4>Friends</h4>
         <% for(u of all_user){%>
@@ -28,7 +30,21 @@
             </p>
         <%} %>
     </section>
+</section>
+
+   
 </div>
 <!-- importing this script for creating the comments -->
 <script src="/js/home_post.js"></script>
-<script src="/js/home_post_comments"></script>
+<script src="/js/home_post_comments.js"></script>
+
+<!-- CHANGE :: import the script file for toggle likes, also run it over for the already present posts and comments on the page -->
+<script src="/js/toggle_likes.js"></script>
+<script>
+    $('.toggle-like-button').each(function(){
+        let self = this;
+        let toggleLike = new ToggleLike(self);
+    });
+</script>
+
+

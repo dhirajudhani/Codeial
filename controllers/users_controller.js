@@ -5,6 +5,7 @@ const path = require('path');
 // This one controller can handle many users 
 //Note every time  we make controller to access it we have to make route
 module.exports.profile = function(req,res){
+  
    User.findById(req.params.id, function(err,user){
       return res.render('user_profile',{
          title:"User",
